@@ -1,0 +1,53 @@
+{
+    "total_account": 4070,
+    "products": [
+      {
+        "name": "Pizza Margherita",
+        "numberServings": 2,
+        "price": 450,
+        "total": 900
+      },
+      {
+        "name": "Caesar Salad",
+        "numberServings": 1,
+        "price": 380,
+        "total": 380
+      },
+      {
+        "name": "Spaghetti Bolognese",
+        "numberServings": 1,
+        "price": 520,
+        "total": 520
+      },
+      {
+        "name": "Tiramisu",
+        "numberServings": 2,
+        "price": 300,
+        "total": 600
+      },
+      {
+        "name": "Coca-Cola",
+        "numberServings": 3,
+        "price": 120,
+        "total": 360
+      },
+      {
+        "name": "Espresso",
+        "numberServings": 2,
+        "price": 150,
+        "total": 300
+      },
+      {
+        "name": "Garlic Bread",
+        "numberServings": 4,
+        "price": 160,
+        "total": 160
+      },
+      {
+        "name": "Minestrone Soup",
+        "numberServings": 1,
+        "price": 450,
+        "total": 450
+      }
+    ]
+  }

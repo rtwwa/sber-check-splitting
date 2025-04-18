@@ -1,0 +1,64 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    volumes:
+      - redis_data:/data
+    networks:
+      - redis_net
+    command: ["redis-server", "--requirepass", "mypassword"]
+
+  ocr_api:
+    build:
+      context: .
+      dockerfile: ./OCR/Dockerfile
+    container_name: ocr_api
+    ports:
+      - 8080:8080
+    networks:
+      - py_net
+    depends_on:
+      - memcache
+
+  routing:
+    build:
+      context: .
+      dockerfile: ./SmartSplitRouter/Dockerfile
+    container_name: router_api
+    ports:
+      - 8090:8090
+    networks:
+      - py_net
+    depends_on:
+      - ocr_api
+
+  memcache:
+    build:
+      context: .
+      dockerfile: ./memCache/Dockerfile
+    container_name: memCache_api
+    networks:
+      - redis_net
+      - py_net
+    ports:
+      - 8000:8000
+
+  web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+    container_name: web
+    networks:
+      - py_net
+    ports:
+      - 5173:80
+
+volumes:
+  redis_data:
+
+networks:
+  redis_net:
+    driver: bridge
+  py_net:
+    driver: bridge
